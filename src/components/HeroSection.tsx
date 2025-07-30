@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Download, Mail, ArrowDown } from 'lucide-react';
-import profilePhoto from '@/assets/profile-photo.jpg';
+// import profilePhoto from '@/assets/profile-photo.jpg';
+const profilePhoto = '/lovable-uploads/9b0d944d-7b9c-4e35-81b2-85a77c1277c3.png';
 import heroBackground from '@/assets/hero-background.jpg';
 
 const HeroSection = () => {
