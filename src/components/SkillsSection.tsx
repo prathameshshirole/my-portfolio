@@ -2,8 +2,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Database, Code, BarChart3, Brain, Globe, TrendingUp } from 'lucide-react';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useRef, useState, useEffect } from 'react';
 
 const SkillsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isVisible = useIntersectionObserver(sectionRef, { threshold: 0.1 });
+  const [animatedSkills, setAnimatedSkills] = useState<Set<string>>(new Set());
+
   const skillCategories = [
     {
       icon: Database,
@@ -43,6 +49,18 @@ const SkillsSection = () => {
     }
   ];
 
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        const allSkills = skillCategories.flatMap(category => 
+          category.skills.map(skill => `${category.title}-${skill.name}`)
+        );
+        setAnimatedSkills(new Set(allSkills));
+      }, 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
   const getColorClasses = (color: string) => {
     switch (color) {
       case 'primary':
@@ -57,7 +75,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-20">
+    <section ref={sectionRef} id="skills" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -98,8 +116,8 @@ const SkillsSection = () => {
                           </span>
                         </div>
                         <Progress 
-                          value={skill.level} 
-                          className="h-2"
+                          value={animatedSkills.has(`${category.title}-${skill.name}`) ? skill.level : 0} 
+                          className="h-2 transition-all duration-1000 ease-out"
                         />
                       </div>
                     ))}

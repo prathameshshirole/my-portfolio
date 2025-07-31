@@ -16,6 +16,7 @@ const HeroSection = () => {
     <section 
       id="home" 
       className="min-h-screen relative flex items-center justify-center overflow-hidden pb-24 pt-16"
+      aria-labelledby="hero-heading"
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: 'cover',
@@ -53,8 +54,12 @@ const HeroSection = () => {
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary/30 data-glow mx-auto">
               <img 
                 src={profilePhoto} 
-                alt="Prathamesh Shirole" 
+                alt="Prathamesh Shirole - Data Science Professional" 
                 className="w-full h-full object-cover"
+                loading="eager"
+                width="288"
+                height="288"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent"></div>
             </div>
@@ -65,7 +70,7 @@ const HeroSection = () => {
 
           {/* Main Content */}
           <div className="text-center lg:text-left max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+            <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
               <span className="gradient-text">Prathamesh Shirole</span>
             </h1>
             
@@ -83,6 +88,7 @@ const HeroSection = () => {
                 size="lg" 
                 className="data-glow bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 w-full sm:w-auto"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                aria-label="View my projects section"
               >
                 View Projects
               </Button>
@@ -101,6 +107,7 @@ const HeroSection = () => {
                 size="lg"
                 className="gradient-border hover:shadow-glow-accent transition-all duration-300 w-full sm:w-auto"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                aria-label="Go to contact section"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Me

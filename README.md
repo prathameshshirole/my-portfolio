@@ -1,63 +1,116 @@
-# Welcome to your project
+# Prathamesh Shirole - Data Insights Portfolio
 
-## Project info
+Welcome to my personal portfolio website showcasing my journey and work as a Data Science graduate with a focus on data analytics and visualization.
 
-**URL**: [Your Project URL Here]
+## Live Website
 
-## How can I edit this code?
+**URL**: https://pshirole.me
 
-There are several ways of editing your application.
+## About This Project
 
-**Use your preferred IDE**
+This portfolio website serves as a comprehensive showcase of my skills, projects, and professional journey in the field of data science. It features:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes.
+- Professional introduction and background
+- Educational qualifications and certifications
+- Work experience and key accomplishments
+- Technical skills in data analysis tools and technologies
+- Portfolio of data science projects with detailed case studies
+- Contact information and professional links
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Technologies Used
 
-Follow these steps:
+This project is built with modern web technologies:
+
+- **Vite** - Fast build tool and development server
+- **TypeScript** - Strongly typed programming language
+- **React** - Component-based UI library
+- **shadcn/ui** - Reusable component library built with Tailwind CSS and Radix UI
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Router** - Declarative routing for React
+- **React Hook Form** - Performant, flexible forms with easy validation
+- **Zod** - TypeScript-first schema declaration and validation
+- **Recharts** - Composable charting library
+
+## Development Setup
+
+To run this project locally, you'll need Node.js installed on your system.
+
+### Prerequisites
+
+- Node.js (version 16 or higher)
+- npm or yarn package manager
+
+### Installation Steps
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The website will be available at `http://localhost:5173` by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Page components
+├── assets/         # Images and static assets
+├── lib/            # Utility functions
+└── hooks/          # Custom React hooks
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Key sections include:
+- Hero Section with introduction and call-to-action buttons
+- About Section with professional background
+- Education Section with academic qualifications
+- Experience Section with work history
+- Skills Section with technical competencies
+- Projects Section showcasing data science work
+- Contact Section with contact form and links
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
+This project can be deployed to any static site hosting service:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Vercel (recommended)
+- Netlify
+- GitHub Pages
+- AWS S3 + CloudFront
+- Firebase Hosting
 
-## How can I deploy this project?
+To build for production:
+```bash
+npm run build
+```
 
-This project can be deployed using any static site hosting service (e.g., Vercel, Netlify, GitHub Pages).
+The build output will be in the `dist/` directory.
 
-## Can I connect a custom domain to my project?
+## Customization
 
-Yes, you can! Consult your chosen hosting provider's documentation for instructions on connecting a custom domain.
+To customize this portfolio for your own use:
+
+1. Update personal information in the component files
+2. Replace profile photo and other images in `src/assets/`
+3. Modify project details in the Projects section
+4. Update contact information and social media links
+5. Adjust color scheme in `tailwind.config.ts` if desired
+
+## Connecting a Custom Domain
+
+Yes, you can connect a custom domain to your deployed site. The process varies depending on your hosting provider:
+
+- **Vercel**: Add a domain in project settings
+- **Netlify**: Update DNS records with your domain provider
+- **GitHub Pages**: Configure custom domain in repository settings
+
+Consult your chosen hosting provider's documentation for detailed instructions.

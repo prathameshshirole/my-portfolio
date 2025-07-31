@@ -192,6 +192,55 @@ All colors MUST be HSL.
   .animation-delay-600 {
     animation-delay: 600ms;
   }
+
+  /* Fluid Typography */
+  .text-fluid-sm {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+
+  .text-fluid-base {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+  }
+
+  .text-fluid-lg {
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
+  }
+
+  .text-fluid-xl {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  }
+
+  .text-fluid-2xl {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .text-fluid-3xl {
+    font-size: clamp(1.875rem, 5vw, 3rem);
+  }
+
+  .text-fluid-4xl {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+  }
+
+  .text-fluid-5xl {
+    font-size: clamp(3rem, 7vw, 4.5rem);
+  }
+
+  /* Responsive spacing */
+  .space-fluid-y > * + * {
+    margin-top: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
 }
 
 @keyframes float {
@@ -212,4 +261,37 @@ All colors MUST be HSL.
 @keyframes icon-pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .floating-animation,
+  .pulse-glow,
+  .icon-pulse,
+  .animate-bounce,
+  .animate-spin,
+  .data-glow::before {
+    animation: none;
+    transition: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .gradient-text {
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    color: hsl(var(--foreground));
+    font-weight: 700;
+  }
+  
+  .gradient-border::before {
+    background: hsl(var(--border));
+  }
 }

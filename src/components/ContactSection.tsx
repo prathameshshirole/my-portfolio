@@ -7,6 +7,15 @@ import { Mail, Phone, MapPin, Linkedin, Github, Send, Calendar } from 'lucide-re
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from "sonner";
+import { z } from 'zod';
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters').max(50, 'Name must be less than 50 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  company: z.string().max(100, 'Company name must be less than 100 characters').optional(),
+  subject: z.string().min(5, 'Subject must be at least 5 characters').max(100, 'Subject must be less than 100 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message must be less than 1000 characters')
+});
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -17,13 +26,45 @@ const ContactSection = () => {
     message: ''
   });
   const [isSending, setIsSending] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
+    }
+  };
+
+  const validateForm = () => {
+    try {
+      contactFormSchema.parse(formData);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            newErrors[err.path[0].toString()] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
+    }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast.error("Please fix the errors in the form");
+      return;
+    }
+
     setIsSending(true);
 
     emailjs.send(
@@ -32,7 +73,7 @@ const ContactSection = () => {
       formData,
       'WN1h0hFFemcVI-aG2'
     ).then(() => {
-      toast.success("Message sent successfully!");
+      toast.success("Message sent successfully! I'll get back to you within 24 hours.");
       setFormData({
         name: '',
         email: '',
@@ -40,6 +81,7 @@ const ContactSection = () => {
         subject: '',
         message: ''
       });
+      setErrors({});
     }).catch((error) => {
       console.error("EmailJS error:", error);
       toast.error("Failed to send message. Please try again later.");
@@ -202,35 +244,82 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Name</label>
-                    <Input name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required />
+                    <label className="block text-sm font-medium mb-2">Name *</label>
+                    <Input 
+                      name="name" 
+                      value={formData.name} 
+                      onChange={handleChange} 
+                      placeholder="Your name" 
+                      className={errors.name ? 'border-destructive' : ''}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                    />
+                    {errors.name && (
+                      <p id="name-error" className="text-sm text-destructive mt-1">{errors.name}</p>
+                    )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your.email@company.com" required />
+                    <label className="block text-sm font-medium mb-2">Email *</label>
+                    <Input 
+                      name="email" 
+                      type="email" 
+                      value={formData.email} 
+                      onChange={handleChange} 
+                      placeholder="your.email@company.com" 
+                      className={errors.email ? 'border-destructive' : ''}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
+                    />
+                    {errors.email && (
+                      <p id="email-error" className="text-sm text-destructive mt-1">{errors.email}</p>
+                    )}
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Company / Organization</label>
-                  <Input name="company" value={formData.company} onChange={handleChange} placeholder="Company name (optional)" />
+                  <Input 
+                    name="company" 
+                    value={formData.company} 
+                    onChange={handleChange} 
+                    placeholder="Company name (optional)" 
+                    className={errors.company ? 'border-destructive' : ''}
+                    aria-describedby={errors.company ? 'company-error' : undefined}
+                  />
+                  {errors.company && (
+                    <p id="company-error" className="text-sm text-destructive mt-1">{errors.company}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Subject</label>
-                  <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Data Analyst Position / Collaboration Opportunity" required />
+                  <label className="block text-sm font-medium mb-2">Subject *</label>
+                  <Input 
+                    name="subject" 
+                    value={formData.subject} 
+                    onChange={handleChange} 
+                    placeholder="Data Analyst Position / Collaboration Opportunity" 
+                    className={errors.subject ? 'border-destructive' : ''}
+                    aria-describedby={errors.subject ? 'subject-error' : undefined}
+                  />
+                  {errors.subject && (
+                    <p id="subject-error" className="text-sm text-destructive mt-1">{errors.subject}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <label className="block text-sm font-medium mb-2">Message *</label>
                   <Textarea 
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell me about the opportunity, your data challenges, or how we can collaborate..."
-                    className="min-h-[120px]"
-                    required
+                    className={`min-h-[120px] ${errors.message ? 'border-destructive' : ''}`}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                   />
+                  {errors.message && (
+                    <p id="message-error" className="text-sm text-destructive mt-1">{errors.message}</p>
+                  )}
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {formData.message.length}/1000 characters
+                  </p>
                 </div>
 
                 <Button 
