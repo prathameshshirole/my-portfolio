@@ -16,7 +16,7 @@ const ExperienceSection = () => {
         </div>
 
         {/* Main Experience */}
-        <Card className="gradient-border data-glow mb-12">
+        <Card className="gradient-border data-glow mb-12 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
           <CardContent className="p-8">
             <div className="flex flex-col lg:flex-row lg:items-start gap-8">
               <div className="flex-shrink-0">
@@ -45,8 +45,8 @@ const ExperienceSection = () => {
 
                 <div className="space-y-6">
                   <p className="text-foreground/90 leading-relaxed">
-                    Developed and deployed a high-performance handwritten digit classification system 
-                    achieving 98% accuracy using advanced machine learning techniques and computer vision algorithms.
+                    Analyzed the MNIST dataset to build a predictive classification model for handwritten digits, 
+                    achieving 98% accuracy through rigorous data preprocessing and feature engineering.
                   </p>
 
                   {/* Key Achievements */}
@@ -99,16 +99,16 @@ const ExperienceSection = () => {
                     </h4>
                     <div className="grid md:grid-cols-3 gap-4">
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h5 className="font-medium text-foreground mb-2">Machine Learning</h5>
-                        <p className="text-sm text-muted-foreground">Model training, validation, and optimization techniques</p>
+                        <h5 className="font-medium text-foreground mb-2">Predictive Modeling</h5>
+                        <p className="text-sm text-muted-foreground">Techniques for forecasting and classification</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h5 className="font-medium text-foreground mb-2">Computer Vision</h5>
-                        <p className="text-sm text-muted-foreground">Image processing and pattern recognition systems</p>
+                        <h5 className="font-medium text-foreground mb-2">Image Data Analysis</h5>
+                        <p className="text-sm text-muted-foreground">Processing and interpreting visual data</p>
                       </div>
                       <div className="bg-muted/30 rounded-lg p-4">
-                        <h5 className="font-medium text-foreground mb-2">Web Deployment</h5>
-                        <p className="text-sm text-muted-foreground">Production deployment and performance optimization</p>
+                        <h5 className="font-medium text-foreground mb-2">Dashboarding & Visualization</h5>
+                        <p className="text-sm text-muted-foreground">Creating interactive reports and dashboards</p>
                       </div>
                     </div>
                   </div>
@@ -119,34 +119,10 @@ const ExperienceSection = () => {
         </Card>
 
         {/* Additional Experience & Achievements */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card className="gradient-border data-glow">
-            <CardContent className="p-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Globe className="h-6 w-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Content Creation</h3>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">YouTube Subscribers</span>
-                      <span className="font-bold text-accent">6.79K+</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Total Views</span>
-                      <span className="font-bold text-accent">1.5M+</span>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-3">
-                    Educational content creation demonstrating communication skills and technical knowledge sharing
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="grid md:grid-cols-1 gap-8">
+          
 
-          <Card className="gradient-border data-glow">
+          <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
             <CardContent className="p-6">
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -179,14 +155,10 @@ const ExperienceSection = () => {
               Seeking opportunities to apply my data science expertise in challenging real-world business scenarios. 
               I'm particularly interested in roles focused on <span className="text-primary font-semibold">data analysis</span>, 
               <span className="text-secondary font-semibold"> business intelligence</span>, and 
-              <span className="text-accent font-semibold"> machine learning implementation</span> where I can contribute 
+              <span className="text-accent font-semibold"> data-driven reporting</span> where I can contribute 
               to data-driven decision making and help organizations unlock valuable insights from their data.
             </p>
-            <div className="flex justify-center gap-4 mt-6">
-              <Badge className="bg-primary/20 text-primary">Immediately Available</Badge>
-              <Badge className="bg-secondary/20 text-secondary">Full-time Positions</Badge>
-              <Badge className="bg-accent/20 text-accent">Open to Relocation</Badge>
-            </div>
+            
           </CardContent>
         </Card>
       </div>

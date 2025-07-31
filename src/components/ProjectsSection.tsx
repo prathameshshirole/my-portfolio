@@ -23,7 +23,9 @@ const ProjectsSection = () => {
         accuracy: "98%",
         deployment: "Real-time",
         status: "Production"
-      }
+      },
+      demoLink: "#",
+      sourceCodeLink: "#"
     },
     {
       icon: Search,
@@ -43,7 +45,8 @@ const ProjectsSection = () => {
         focus: "NLP",
         type: "Dissertation",
         status: "Academic"
-      }
+      },
+      researchPaperLink: "#"
     },
     {
       icon: Database,
@@ -63,7 +66,8 @@ const ProjectsSection = () => {
         projects: "5+",
         domains: "Multi-sector",
         status: "Completed"
-      }
+      },
+      projectPortfolioLink: "#"
     }
   ];
 
@@ -105,7 +109,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => {
             const colors = getIconColors(index);
             return (
-              <Card key={index} className="gradient-border data-glow">
+              <Card key={index} className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                 <CardContent className="p-8">
                   <div className="flex flex-col lg:flex-row gap-8">
                     {/* Project Icon & Basic Info */}
@@ -180,26 +184,54 @@ const ProjectsSection = () => {
                       <div className="flex flex-wrap gap-3">
                         {project.type === "Professional" && (
                           <>
-                            <Button variant="outline" size="sm">
-                              <ExternalLink className="h-4 w-4 mr-2" />
-                              View Demo
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              asChild 
+                              disabled={!project.demoLink}
+                            >
+                              <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                View Demo
+                              </a>
                             </Button>
-                            <Button variant="ghost" size="sm">
-                              <Github className="h-4 w-4 mr-2" />
-                              Source Code
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              asChild 
+                              disabled={!project.sourceCodeLink}
+                            >
+                              <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer">
+                                <Github className="h-4 w-4 mr-2" />
+                                Source Code
+                              </a>
                             </Button>
                           </>
                         )}
                         {project.type === "Research" && (
-                          <Button variant="outline" size="sm">
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            Research Paper
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            asChild 
+                            disabled={!project.researchPaperLink}
+                          >
+                            <a href={project.researchPaperLink} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              Research Paper
+                            </a>
                           </Button>
                         )}
                         {project.type === "Academic" && (
-                          <Button variant="outline" size="sm">
-                            <Github className="h-4 w-4 mr-2" />
-                            Project Portfolio
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            asChild 
+                            disabled={!project.projectPortfolioLink}
+                          >
+                            <a href={project.projectPortfolioLink} target="_blank" rel="noopener noreferrer">
+                              <Github className="h-4 w-4 mr-2" />
+                              Project Portfolio
+                            </a>
                           </Button>
                         )}
                       </div>
@@ -213,7 +245,7 @@ const ProjectsSection = () => {
 
         {/* Project Summary */}
         <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <Card className="gradient-border data-glow text-center">
+          <Card className="gradient-border data-glow text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
             <CardContent className="p-6">
               <div className="text-3xl font-bold text-primary mb-2">98%</div>
               <div className="text-sm text-muted-foreground mb-2">Model Accuracy</div>
@@ -221,7 +253,7 @@ const ProjectsSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="gradient-border data-glow text-center">
+          <Card className="gradient-border data-glow text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
             <CardContent className="p-6">
               <div className="text-3xl font-bold text-secondary mb-2">3+</div>
               <div className="text-sm text-muted-foreground mb-2">Major Projects</div>
@@ -229,7 +261,7 @@ const ProjectsSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="gradient-border data-glow text-center">
+          <Card className="gradient-border data-glow text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
             <CardContent className="p-6">
               <div className="text-3xl font-bold text-accent mb-2">5+</div>
               <div className="text-sm text-muted-foreground mb-2">Technologies</div>

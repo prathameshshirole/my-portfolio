@@ -72,10 +72,10 @@ const SkillsSection = () => {
           {skillCategories.map((category, categoryIndex) => {
             const colors = getColorClasses(category.color);
             return (
-              <Card key={categoryIndex} className="gradient-border data-glow">
+              <Card key={categoryIndex} className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl group">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className={`w-12 h-12 ${colors.bg} rounded-lg flex items-center justify-center`}>
+                    <div className={`w-12 h-12 ${colors.bg} rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:animate-icon-pulse`}>
                       <category.icon className={`h-6 w-6 ${colors.icon}`} />
                     </div>
                     <h3 className="text-lg font-semibold">{category.title}</h3>
@@ -118,7 +118,7 @@ const SkillsSection = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Development Tools */}
-            <Card className="gradient-border data-glow">
+            <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Code className="h-6 w-6 text-primary" />
@@ -134,7 +134,7 @@ const SkillsSection = () => {
             </Card>
 
             {/* Data Processing */}
-            <Card className="gradient-border data-glow">
+            <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Database className="h-6 w-6 text-secondary" />
@@ -150,7 +150,7 @@ const SkillsSection = () => {
             </Card>
 
             {/* Visualization */}
-            <Card className="gradient-border data-glow">
+            <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <BarChart3 className="h-6 w-6 text-accent" />
@@ -166,7 +166,7 @@ const SkillsSection = () => {
             </Card>
 
             {/* Cloud & Deployment */}
-            <Card className="gradient-border data-glow">
+            <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Globe className="h-6 w-6 text-primary" />
@@ -189,9 +189,9 @@ const SkillsSection = () => {
             <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
               <Brain className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-bold mb-2">Machine Learning</h3>
+            <h3 className="text-xl font-bold mb-2">Advanced Analytics</h3>
             <p className="text-muted-foreground">
-              98% accuracy achieved in production ML models with advanced optimization techniques
+              Leveraging statistical methods and data modeling for deep insights and predictive capabilities
             </p>
           </div>
 

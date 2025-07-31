@@ -5,8 +5,8 @@ const AboutSection = () => {
   const highlights = [
     {
       icon: Brain,
-      title: "Machine Learning Expertise",
-      description: "Advanced knowledge in ML algorithms, model optimization, and deployment strategies"
+      title: "Data Modeling & Analysis",
+      description: "Proficient in designing data models, performing complex analysis, and extracting actionable insights"
     },
     {
       icon: Database,
@@ -42,17 +42,15 @@ const AboutSection = () => {
           <div className="space-y-6">
             <div className="prose prose-lg dark:prose-invert">
               <p className="text-foreground/90 leading-relaxed">
-                As a recent <strong className="text-primary">MSc Data Science graduate from University of Essex</strong>, 
-                I bring a fresh perspective and cutting-edge knowledge to the field of data analytics. 
-                My academic foundation is complemented by practical experience gained through internships 
-                and hands-on projects.
+                My passion lies in uncovering the stories hidden within data and transforming complex information into clear, actionable strategies. 
+                With a recent <strong className="text-primary">MSc in Data Science from the University of Essex</strong>, I have a strong academic foundation complemented by practical, hands-on project experience.
               </p>
               
               <p className="text-foreground/90 leading-relaxed">
-                I specialize in <strong className="text-secondary">machine learning</strong>, 
-                <strong className="text-accent"> statistical analysis</strong>, and 
+                I specialize in <strong className="text-secondary">data analysis</strong>, 
+                <strong className="text-accent"> statistical modeling</strong>, and 
                 <strong className="text-primary"> data visualization</strong>, 
-                with a proven track record of achieving 98% accuracy in ML model deployment. 
+                with a proven ability to develop reports and dashboards that drive business decisions. 
                 My approach combines technical expertise with business acumen to deliver solutions 
                 that drive real-world impact.
               </p>
@@ -65,23 +63,13 @@ const AboutSection = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                Immediately Available
-              </span>
-              <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm font-medium">
-                Mumbai, India
-              </span>
-              <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                Open to Relocation
-              </span>
-            </div>
+            
           </div>
 
           {/* Highlights Grid */}
           <div className="grid gap-6">
             {highlights.map((highlight, index) => (
-              <Card key={index} className="gradient-border data-glow">
+              <Card className="gradient-border data-glow text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">

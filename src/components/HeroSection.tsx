@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Download, Mail, ArrowDown } from 'lucide-react';
+import { Download, Mail, ChevronDown } from 'lucide-react';
 // import profilePhoto from '@/assets/profile-photo.jpg';
 const profilePhoto = '/lovable-uploads/9b0d944d-7b9c-4e35-81b2-85a77c1277c3.png';
 import heroBackground from '@/assets/hero-background.jpg';
@@ -39,16 +39,14 @@ const HeroSection = () => {
         <div className="flex flex-col items-center space-y-8">
           {/* Profile Photo */}
           <div className="relative">
-            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-primary/30 data-glow">
+            <div className="w-[300px] h-[300px] rounded-full overflow-hidden border-4 border-primary/30 data-glow">
               <img 
                 src={profilePhoto} 
                 alt="Prathamesh Shirole" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -top-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center pulse-glow">
-              <span className="text-xs font-bold text-secondary-foreground">✓</span>
-            </div>
+            
           </div>
 
           {/* Main Content */}
@@ -62,24 +60,10 @@ const HeroSection = () => {
             </p>
             
             <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed">
-              Transforming data into actionable insights through advanced analytics and machine learning
+              Transforming data into actionable insights through advanced analytics and compelling data visualization
             </p>
 
-            {/* Key Metrics */}
-            <div className="flex flex-wrap justify-center gap-8 my-8">
-              <div className="text-center gradient-border p-4 min-w-[120px]">
-                <div className="text-2xl md:text-3xl font-bold text-primary">98%</div>
-                <div className="text-sm text-muted-foreground">ML Accuracy</div>
-              </div>
-              <div className="text-center gradient-border p-4 min-w-[120px]">
-                <div className="text-2xl md:text-3xl font-bold text-secondary">1.5M+</div>
-                <div className="text-sm text-muted-foreground">Total Views</div>
-              </div>
-              <div className="text-center gradient-border p-4 min-w-[120px]">
-                <div className="text-2xl md:text-3xl font-bold text-accent">6.79K+</div>
-                <div className="text-sm text-muted-foreground">Subscribers</div>
-              </div>
-            </div>
+            
 
             {/* Call to Action */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -90,17 +74,20 @@ const HeroSection = () => {
               >
                 View Projects
               </Button>
+              <a href="/Prathamesh_Shirole_CV.pdf" download>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="gradient-border hover:shadow-glow-secondary transition-all duration-300"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download CV
+                </Button>
+              </a>
               <Button 
                 variant="outline" 
-                size="lg" 
-                className="gradient-border hover:shadow-glow-secondary transition-all duration-300"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
-              </Button>
-              <Button 
-                variant="ghost" 
                 size="lg"
+                className="gradient-border hover:shadow-glow-accent transition-all duration-300"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Mail className="mr-2 h-4 w-4" />
@@ -113,9 +100,9 @@ const HeroSection = () => {
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <button 
               onClick={scrollToNext}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors animate-bounce"
             >
-              <ArrowDown className="h-6 w-6" />
+              <ChevronDown className="h-6 w-6" />
             </button>
           </div>
         </div>

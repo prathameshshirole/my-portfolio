@@ -17,7 +17,7 @@ const EducationSection = () => {
 
         <div className="space-y-8">
           {/* MSc Data Science */}
-          <Card className="gradient-border data-glow">
+          <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div className="flex items-start space-x-4">
@@ -47,7 +47,7 @@ const EducationSection = () => {
                       <div>
                         <h4 className="font-semibold text-foreground mb-2">Key Modules:</h4>
                         <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline">ML for Finance</Badge>
+                          <Badge variant="outline">Financial Data Analysis</Badge>
                           <Badge variant="outline">SQL & Database Processing</Badge>
                           <Badge variant="outline">Experimental Data Modeling</Badge>
                           <Badge variant="outline">Statistical Analysis</Badge>
@@ -57,7 +57,7 @@ const EducationSection = () => {
                       <div>
                         <h4 className="font-semibold text-foreground mb-2">Dissertation:</h4>
                         <p className="text-foreground/80 italic">
-                          "Optimizing E-commerce Search Algorithms with Natural Language Processing"
+                          "Data-Driven Insights for E-commerce Search Optimization"
                         </p>
                       </div>
                     </div>
@@ -68,7 +68,7 @@ const EducationSection = () => {
           </Card>
 
           {/* BE Information Technology */}
-          <Card className="gradient-border data-glow">
+          <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div className="flex items-start space-x-4">
@@ -115,7 +115,7 @@ const EducationSection = () => {
 
         {/* Academic Achievements */}
         <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <Card className="text-center p-6 data-glow">
+          <Card className="text-center p-6 transition-all duration-300 hover:scale-[1.02] hover:hover:shadow-xl">
             <CardContent className="p-0">
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <GraduationCap className="h-6 w-6 text-primary" />
@@ -127,7 +127,7 @@ const EducationSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center p-6 data-glow">
+          <Card className="text-center p-6 transition-all duration-300 hover:scale-[1.02] hover:hover:shadow-xl">
             <CardContent className="p-0">
               <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Award className="h-6 w-6 text-secondary" />
@@ -139,7 +139,7 @@ const EducationSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="text-center p-6 data-glow">
+          <Card className="text-center p-6 transition-all duration-300 hover:scale-[1.02] hover:hover:shadow-xl">
             <CardContent className="p-0">
               <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <BookOpen className="h-6 w-6 text-accent" />

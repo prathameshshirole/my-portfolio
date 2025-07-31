@@ -9,8 +9,8 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold gradient-text mb-4">Prathamesh Shirole</h3>
             <p className="text-muted-foreground mb-4">
-              MSc Data Science Graduate specializing in machine learning, 
-              data analysis, and business intelligence solutions.
+              MSc Data Science Graduate specializing in data analysis, 
+              business intelligence, and data-driven problem-solving.
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
@@ -23,7 +23,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-accent" />
-                <span className="text-foreground">Mumbai, India</span>
+                <span className="text-foreground">London, UK</span>
               </div>
             </div>
           </div>
@@ -71,14 +71,7 @@ const Footer = () => {
               </div>
             </div>
             
-            <div className="mt-6">
-              <p className="text-xs text-muted-foreground mb-2">Specializing in:</p>
-              <div className="flex flex-wrap gap-1">
-                <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">Data Analysis</span>
-                <span className="px-2 py-1 bg-secondary/10 text-secondary text-xs rounded">Machine Learning</span>
-                <span className="px-2 py-1 bg-accent/10 text-accent text-xs rounded">Business Intelligence</span>
-              </div>
-            </div>
+            
           </div>
         </div>
 
@@ -88,9 +81,7 @@ const Footer = () => {
             <Heart className="inline h-4 w-4 text-red-500 mx-1" />
             using React, TypeScript & Tailwind CSS
           </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Ready to transform your data into actionable insights
-          </p>
+          
         </div>
       </div>
     </footer>

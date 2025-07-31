@@ -3,9 +3,50 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Mail, Phone, MapPin, Linkedin, Github, Youtube, Send, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Send, Calendar } from 'lucide-react';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from "sonner";
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    subject: '',
+    message: ''
+  });
+  const [isSending, setIsSending] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    emailjs.send(
+      'service_ogsigac',
+      'template_6xgpmk9',
+      formData,
+      'WN1h0hFFemcVI-aG2'
+    ).then(() => {
+      toast.success("Message sent successfully!");
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        subject: '',
+        message: ''
+      });
+    }).catch((error) => {
+      console.error("EmailJS error:", error);
+      toast.error("Failed to send message. Please try again later.");
+    }).finally(() => {
+      setIsSending(false);
+    });
+  };
   const contactInfo = [
     {
       icon: Mail,
@@ -24,7 +65,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "Mumbai, India",
+      value: "London, UK",
       link: null,
       color: "accent"
     }
@@ -35,22 +76,15 @@ const ContactSection = () => {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Professional Profile",
-      link: "#",
+      link: "https://www.linkedin.com/in/prathamesh-shirole/",
       color: "primary"
     },
     {
       icon: Github,
       label: "GitHub",
       value: "Code Portfolio",
-      link: "#",
+      link: "https://github.com/prathameshshirole",
       color: "secondary"
-    },
-    {
-      icon: Youtube,
-      label: "YouTube",
-      value: "6.79K+ Subscribers",
-      link: "#",
-      color: "accent"
     }
   ];
 
@@ -74,15 +108,13 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Let's <span className="gradient-text">Connect</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to contribute to data-driven success. Currently available for immediate opportunities in data analysis and business intelligence.
-          </p>
+          
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <Card className="gradient-border data-glow">
+            <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
                 
@@ -131,7 +163,7 @@ const ContactSection = () => {
             </Card>
 
             {/* Social Links */}
-            <Card className="gradient-border data-glow">
+            <Card className="gradient-border data-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
               <CardContent className="p-8">
                 <h3 className="text-xl font-bold mb-6">Connect Online</h3>
                 
@@ -142,6 +174,8 @@ const ContactSection = () => {
                       <a 
                         key={index}
                         href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`flex items-center space-x-4 p-4 rounded-lg transition-all duration-200 ${colors.bg} ${colors.hover}`}
                       >
                         <social.icon className={`h-5 w-5 ${colors.text}`} />
@@ -165,33 +199,37 @@ const ContactSection = () => {
                 Interested in discussing data science opportunities? I'd love to hear from you!
               </p>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Name</label>
-                    <Input placeholder="Your name" />
+                    <Input name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required />
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Email</label>
-                    <Input type="email" placeholder="your.email@company.com" />
+                    <Input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your.email@company.com" required />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Company / Organization</label>
-                  <Input placeholder="Company name (optional)" />
+                  <Input name="company" value={formData.company} onChange={handleChange} placeholder="Company name (optional)" />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Subject</label>
-                  <Input placeholder="Data Analyst Position / Collaboration Opportunity" />
+                  <Input name="subject" value={formData.subject} onChange={handleChange} placeholder="Data Analyst Position / Collaboration Opportunity" required />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <Textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Tell me about the opportunity, your data challenges, or how we can collaborate..."
                     className="min-h-[120px]"
+                    required
                   />
                 </div>
 
@@ -199,9 +237,16 @@ const ContactSection = () => {
                   type="submit" 
                   size="lg" 
                   className="w-full bg-gradient-primary hover:shadow-glow-primary transition-all duration-300"
+                  disabled={isSending}
                 >
-                  <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  {isSending ? (
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-4 w-4" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
 
