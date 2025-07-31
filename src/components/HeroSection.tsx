@@ -111,9 +111,9 @@ const HeroSection = () => {
       </div>
       
          {/* Scroll indicator */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-20">
-        <span className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2 px-2 text-center">Scroll to explore</span>
-        <ChevronDown className="text-primary cursor-pointer hover:text-primary/80 transition-colors" size={16} onClick={scrollToNext} />
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 inset-x-0 flex flex-col items-center animate-bounce z-20">
+        <span className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">Scroll to explore</span>
+        <ChevronDown className="text-primary cursor-pointer hover:text-primary/80 transition-colors" size={24} onClick={scrollToNext} />
       </div>
     </section>
   );
