@@ -15,7 +15,7 @@ const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen relative flex items-center justify-center overflow-hidden pb-16"
+      className="min-h-screen relative flex items-center justify-center overflow-hidden pb-24 pt-16"
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: 'cover',
@@ -47,10 +47,10 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
           {/* Profile Photo */}
-          <div className="relative flex-shrink-0">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 data-glow mx-auto">
+          <div className="relative flex-shrink-0 mt-4 sm:mt-0">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary/30 data-glow mx-auto">
               <img 
                 src={profilePhoto} 
                 alt="Prathamesh Shirole" 
@@ -58,27 +58,27 @@ const HeroSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent"></div>
             </div>
-            <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-primary rounded-full p-2 sm:p-3 pulse-glow">
-              <BarChart3 className="text-primary-foreground" size={20} />
+            <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 bg-primary rounded-full p-1.5 sm:p-2 pulse-glow">
+              <BarChart3 className="text-primary-foreground" size={16} />
             </div>
           </div>
 
           {/* Main Content */}
           <div className="text-center lg:text-left max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
               <span className="gradient-text">Prathamesh Shirole</span>
             </h1>
             
-            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-medium mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium mb-4 sm:mb-6">
               MSc Data Science Graduate | Aspiring Data Analyst
             </p>
             
-            <p className="text-base sm:text-lg md:text-xl text-foreground/90 mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-foreground/90 mb-6 sm:mb-8 leading-relaxed">
               Transforming data into actionable insights through advanced analytics and compelling data visualization
             </p>
 
             {/* Call to Action */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
                 className="data-glow bg-gradient-primary hover:shadow-glow-primary transition-all duration-300 w-full sm:w-auto"
@@ -110,10 +110,10 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <span className="text-xs sm:text-sm text-muted-foreground mb-2">Scroll to explore</span>
-        <ChevronDown className="text-primary" size={20} />
+         {/* Scroll indicator */}
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce z-20">
+        <span className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2 px-2 text-center">Scroll to explore</span>
+        <ChevronDown className="text-primary cursor-pointer hover:text-primary/80 transition-colors" size={16} onClick={scrollToNext} />
       </div>
     </section>
   );
