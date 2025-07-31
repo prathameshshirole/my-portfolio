@@ -78,9 +78,9 @@ const HeroSection = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="gradient-border hover:shadow-glow-secondary transition-all duration-300"
+                  className="gradient-border hover:shadow-glow-secondary transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  <Download className="mr-2 h-4 w-4" />
+                  <Download className="h-4 w-4" />
                   Download CV
                 </Button>
               </a>
@@ -96,15 +96,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <button 
-              onClick={scrollToNext}
-              className="text-muted-foreground hover:text-primary transition-colors animate-bounce"
-            >
-              <ChevronDown className="h-6 w-6" />
-            </button>
-          </div>
+          
         </div>
       </div>
     </section>
