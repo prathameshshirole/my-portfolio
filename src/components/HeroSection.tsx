@@ -111,7 +111,7 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce pb-8">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
         <span className="text-xs sm:text-sm text-muted-foreground mb-2">Scroll to explore</span>
         <ChevronDown className="text-primary" size={20} />
       </div>
